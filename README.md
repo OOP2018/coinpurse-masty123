@@ -1,14 +1,29 @@
-## Coin Purse
+# Coin Purse
+by Theeruth Borisuth
 
-This is the starter code for the Coin Purse.
-In future labs we will add to this application
-to illustrate several common design ideas and design patterns.
+This program can deposite and withdraw your coins from the purse.
+This project contains 6 classes
 
-The instructions are See instructions are in [week2/Lab2-CoinPurse.pdf](https://skeoop.github.io/week2/Lab2-CoinPurse.pdf)
+## Coin
 
-The file `PurseTest.java` is a JUnit 4 test suite.
-To use it you should add the Junit 4 "Library" to your IDE project.
-Eclipse, Netbeans, IntelliJ, and BlueJ include JUnit 4,
-but you have to tell the IDE to add it to your project.
+A coin with a monetary value and currency.
 
+## CoinUtil
 
+Some Coin utility methods for practice using Lists and Comparator.
+
+## ConsoleDialog
+
+User Interface for the Coin Purse. This class provides simple interactive dialog for inserting and removing money to/from the purse, and displaying the balance.
+
+## Main
+
+A main class to create objects and connect objects together. The user interface needs a reference to coin purse.
+
+## Purse
+
+A coin purse contains coins. You can insert coins, withdraw money, check the balance, and check if the purse is full. When you withdraw money, the coin purse decides which coins to remove.
+
+## Pursetest
+
+Test the Purse. This is a JUnit 4 test.

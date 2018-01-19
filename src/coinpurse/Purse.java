@@ -13,7 +13,6 @@ import java.util.Collections;
  */
 public class Purse {
     /** Collection of objects in the purse. */
-    //TODO declare a List of Coins named "money".
     private List<Coin> money ;
     /** Capacity is maximum number of items the purse can hold.
      *  Capacity is set when the purse is created and cannot be changed.
@@ -79,7 +78,6 @@ public class Purse {
      */
     public boolean insert( Coin coin ) {
         // if the purse is already full then can't insert anything.
-        //TODO complete the insert method
     	if (!isFull() && coin.getValue() != 0 && coin != null) {
     		money.add(coin);
     		return true;
@@ -101,7 +99,7 @@ public class Purse {
         Collections.sort(money);	
         ArrayList<Coin> cash = new ArrayList<Coin>();
         if (getBalance() >= amount){
-        	for (int i = money.size()-1; i >=0 ; i--){
+        	for (int i = money.size()-1 ; i >=0 ; i--){
         		if (amount - money.get(i).getValue() >= 0){
         			amount -= money.get(i).getValue();
         			cash.add(money.get(i));
@@ -133,4 +131,3 @@ public class Purse {
   
 
 }
-//TODO When you finish, there should not be any TODO comments, including this one!

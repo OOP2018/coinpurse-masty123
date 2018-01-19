@@ -19,12 +19,12 @@ public class Coin implements Comparable<Coin> {
 		else {System.out.println("value invalid");}
 	}
 	
-	double getValue(){
-		return value;
+	public double getValue(){
+		return this.value;
 	}
 	
-	String getCurrency(){
-		return currency;
+	public String getCurrency(){
+		return this.currency;
 	}
 	
 	public boolean equals(Object obj){
@@ -54,6 +54,6 @@ public class Coin implements Comparable<Coin> {
 	}
 	
 	public String toString(){
-		return String.format("%.2f-%s", value, currency);
+		return String.format("%.2f-%s", this.value, this.currency);
 	}	
 }
