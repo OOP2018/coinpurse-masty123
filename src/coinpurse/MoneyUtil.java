@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.List;
 /**
  * Some Money utility methods filtering the currency of the coin and sorting coins
+ * @author Theeruth Borisuth
  */
 public class MoneyUtil  {
 	/**
@@ -30,7 +31,7 @@ public class MoneyUtil  {
 	}
 	/**
 	 * This method's purpose is only use to sort the coin by using the Collections.sort
-	 * @param coins
+	 * @param coins : An object called coin.
 	 */
 	static void sortCoins(List<Coin> coins){
 		java.util.Collections.sort( coins );
@@ -44,7 +45,10 @@ public class MoneyUtil  {
 			System.out.println(c.toString());
 		}
 	}
-	
+	/**
+	 * For checking Coin class.
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		List<Coin> coins = new ArrayList<Coin>( );
 		coins.add( new Coin(10.0, "Baht") );
@@ -54,7 +58,4 @@ public class MoneyUtil  {
 		printCoins( coins );
 		printCoins( coins ); // the coins should be sorted by value now
 	}
-
-	
-	
 }

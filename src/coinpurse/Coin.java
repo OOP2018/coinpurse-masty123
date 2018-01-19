@@ -59,13 +59,18 @@ public class Coin implements Comparable<Coin> {
 			return 0;
 		}
 	}
-	
+	/**
+	 * Print the all the coin in the purse.
+	 * @param coins : An object called "coins".
+	 */
 	public static void printCoins(List<Coin> coins) {
 		for (int i = 0 ; i < coins.size() - 1 ;i++){
 			System.out.println(coins.indexOf(i));		
 		}	
 	}
-	
+	/**a message of coin.
+	 * @return  value and the currency of the coin.
+	 */
 	public String toString(){
 		return String.format("%.2f-%s", this.value, this.currency);
 	}	

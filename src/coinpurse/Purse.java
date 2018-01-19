@@ -1,6 +1,5 @@
 package coinpurse;
 
-// You will use Collections.sort() to sort the coins
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
