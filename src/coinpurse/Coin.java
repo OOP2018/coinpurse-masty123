@@ -18,15 +18,25 @@ public class Coin implements Comparable<Coin> {
 		
 		else {System.out.println("value invalid");}
 	}
-	
+	/**
+	 * Get the value of the coin
+	 * @return value
+	 */
 	public double getValue(){
 		return this.value;
 	}
-	
+	/**
+	 * Get the currency of the coin.
+	 * @return
+	 */
 	public String getCurrency(){
 		return this.currency;
 	}
-	
+	/**
+	 * Check if the value of the coins are equal.
+	 * @return true if the object are equal.
+	 * @return false if the object are not equal.
+	 */
 	public boolean equals(Object obj){
 		if (obj.getClass() != this.getClass() || obj == null){
 			return false;
@@ -34,7 +44,10 @@ public class Coin implements Comparable<Coin> {
 		Coin coins = (Coin) obj;
 		return this.getValue() == coins.getValue() && this.currency == coins.getCurrency();
 	}
-	
+	/**
+	 * Compare the value of 2 coins.
+	 * @return int of compareTo method.
+	 */
 	public int compareTo(Coin coin){
 		if(this.value < coin.getValue()){
 			return -1;

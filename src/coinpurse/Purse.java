@@ -122,7 +122,7 @@ public class Purse {
   
     /** 
      * toString returns a string description of the purse contents.
-     * It can return whatever is a useful description.
+     * @return It can return whatever is a useful description.
      */
     public String toString() {
     	return money.size() + " coins with value " + this.getBalance();
