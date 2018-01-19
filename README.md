@@ -8,7 +8,7 @@ This project contains 6 classes
 
 A coin with a monetary value and currency.
 
-## CoinUtil
+## MoneyUtil
 
 Some Coin utility methods for practice using Lists and Comparator.
 
