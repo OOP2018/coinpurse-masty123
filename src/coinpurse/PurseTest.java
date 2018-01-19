@@ -3,7 +3,6 @@ import static org.junit.Assert.*;
 
 import java.util.Arrays;
 import java.util.List;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,7 +28,7 @@ public class PurseTest {
      * Sets up the test fixture.
      * Called before every test method.
      */
-    @Before
+    
     public void setUp() {
     	// nothing to initialize
     }
