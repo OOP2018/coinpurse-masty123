@@ -55,7 +55,6 @@ public class MoneyUtil  {
 		coins.add( new Coin(0.5, "Baht") );
 		coins.add( new Coin(2.0, "Baht") ); 
 		coins.add( new Coin(1.0, "Baht") );
-		printCoins( coins );
 		printCoins( coins ); // the coins should be sorted by value now
 	}
 }
