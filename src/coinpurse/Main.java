@@ -23,10 +23,5 @@ public class Main {
     	ui.run();
 
     }
-
-	private static void printCoins(List<Coin> coins) {
-		for (int i = 0 ; i < coins.size() ;i++){
-			System.out.println(coins.indexOf(i));		
-		}	
-	}
+    
 }
