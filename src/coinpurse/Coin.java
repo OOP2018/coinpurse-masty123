@@ -42,7 +42,7 @@ public class Coin implements Comparable<Coin> {
 			return false;
 		}
 		Coin coins = (Coin) obj;
-		return this.getValue() == coins.getValue() && this.currency == coins.getCurrency();
+		return this.getValue() == coins.getValue() && this.getCurrency().equals(coins.getCurrency());
 	}
 	/**
 	 * Compare the value of 2 coins.
@@ -58,15 +58,6 @@ public class Coin implements Comparable<Coin> {
 		else{
 			return 0;
 		}
-	}
-	/**
-	 * Print the all the coin in the purse.
-	 * @param coins : An object called "coins".
-	 */
-	public static void printCoins(List<Coin> coins) {
-		for (int i = 0 ; i < coins.size() - 1 ;i++){
-			System.out.println(coins.indexOf(i));		
-		}	
 	}
 	/**a message of coin.
 	 * @return  value and the currency of the coin.
