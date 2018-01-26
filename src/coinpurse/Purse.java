@@ -118,15 +118,6 @@ public class Purse {
 		cash.toArray(array);
 		return array;
 	}
-	/**
-	 * Print the all the coin in the purse.
-	 * @param coins : An object called "coins".
-	 */
-	public static void printCoins(List<Valuable> coins) {
-		for (int i = 0 ; i < coins.size() - 1 ;i++){
-			System.out.println(coins.indexOf(i));		
-		}	
-	}
     /** 
      * toString returns a string description of the purse contents.
      * @return It can return whatever is a useful description.
