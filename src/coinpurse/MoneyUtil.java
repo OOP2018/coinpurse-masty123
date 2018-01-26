@@ -17,12 +17,12 @@ public class MoneyUtil  {
 	 * @return a new List containing only the elements from coinlist that have
 	 *         the requested currency.
 	 */
-	static List<Coin> filterBycurrency(List<Coin> coins,String currency){
+	static List<Valuable> Valuable(List<Valuable> coins,String currency){
 		if (currency == null){
 			throw new IllegalArgumentException("Currency cannot be null");
 		}
-		List<Coin> coin = new ArrayList<>();
-		for (Coin cash : coin){
+		List<Valuable> coin = new ArrayList<>();
+		for (Valuable cash : coin){
 			if (cash.getCurrency().equalsIgnoreCase(currency)){
 				coin.add(cash);
 			}
@@ -33,15 +33,15 @@ public class MoneyUtil  {
 	 * This method's purpose is only use to sort the coin by using the Collections.sort
 	 * @param coins : An object called coin.
 	 */
-	static void sortCoins(List<Coin> coins){
+	static void sortCoins(List<Valuable> coins){
 		java.util.Collections.sort( coins );
 	}
 	/**
 	 * This method is use for printing coins.
 	 * @param coins
 	 */
-	private static void printCoins(List<Coin> coins) {
-		for (Coin c : coins){
+	private static void printCoins(List<Valuable> coins) {
+		for (Valuable c : coins){
 			System.out.println(c.toString());
 		}
 	}
@@ -50,7 +50,7 @@ public class MoneyUtil  {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		List<Coin> coins = new ArrayList<Coin>( );
+		List<Valuable> coins = new ArrayList<Valuable>( );
 		coins.add( new Coin(10.0, "Baht") );
 		coins.add( new Coin(0.5, "Baht") );
 		coins.add( new Coin(2.0, "Baht") ); 

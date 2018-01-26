@@ -1,8 +1,4 @@
 package coinpurse;
-
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * A main class to create objects and connect objects together.
  * The user interface needs a reference to coin purse.

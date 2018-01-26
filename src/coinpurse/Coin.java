@@ -1,12 +1,11 @@
 package coinpurse;
 
-import java.util.List;
 
 /**
 * Coin represents coinage (money) with a fixed value and currency.
 * @author Theeruth Borisuth
 */
-public class Coin implements Comparable<Coin> {
+public class Coin implements Valuable {
 	private double value;
 	String currency;
 	
@@ -41,14 +40,14 @@ public class Coin implements Comparable<Coin> {
 		if (obj.getClass() != this.getClass() || obj == null){
 			return false;
 		}
-		Coin coins = (Coin) obj;
+		Valuable coins = (Valuable) obj;
 		return this.getValue() == coins.getValue() && this.getCurrency().equals(coins.getCurrency());
 	}
 	/**
 	 * Compare the value of 2 coins.
 	 * @return int of compareTo method.
 	 */
-	public int compareTo(Coin coin){
+	public int compareTo(Valuable coin){
 		if(this.value < coin.getValue()){
 			return -1;
 		}
@@ -64,5 +63,7 @@ public class Coin implements Comparable<Coin> {
 	 */
 	public String toString(){
 		return String.format("%.2f-%s", this.value, this.currency);
-	}	
+	}
+
+	
 }
