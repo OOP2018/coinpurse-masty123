@@ -6,35 +6,27 @@ public class BankNote implements Valuable {
 	private String currency;
 	private double value;
 	//A unique parameter for BankNote.
-	private long serialNumber = 1000000;
+	private long serialNumber ;
+	private static long nextSerialNumber = 1000000;
 	
 	/**
 	 * A banknote with given value and serialNumber.
 	 * @param value
 	 * @param serialNumber
 	 */
-	public BankNote(double value, long serialNumber){
+	public BankNote(double value, String currency){
 		this.value = value;
-		this.serialNumber = serialNumber;
+		this.currency = currency ;
+		this.serialNumber = nextSerialNumber;
+
 	}
-	
-	/**
-	 * Initialize a bank note with a currency.
-	 * @param value - initial value of bank note
-	 * @param currency - currency of bank note
-	 */
-	public BankNote(double value, String currency, long serialNumber)
-	{
-		this.value = value;
-		this.currency = currency;
-		this.serialNumber = serialNumber;
-	}
+
 	
 	/**
 	 * @return value of the banknote.
 	 */
 	public double getValue() {
-		return getValue() ;
+		return this.value ;
 
 	}
 
@@ -42,7 +34,7 @@ public class BankNote implements Valuable {
 	 * @return currency of the banknote
 	 */
 	public String getCurrency() {
-		return getCurrency();
+		return this.currency;
 	}
 	/**
 	 * @return serialNumber of the BankNote

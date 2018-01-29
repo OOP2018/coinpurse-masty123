@@ -10,12 +10,9 @@ public class Coin implements Valuable {
 	String currency;
 	
 	Coin(double value, String currency){
-		if(value > 0){
 			this.value = value ;
 			this.currency = currency;
-		}
-		
-		else {System.out.println("value invalid");}
+
 	}
 	/**
 	 * Get the value of the coin

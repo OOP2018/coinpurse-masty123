@@ -14,7 +14,7 @@ public class MoneyUtil  {
 	 * @param currency : is the currency we want. Must not be null.
 	 * @throws IllegalArgumentException
 	 *             if currency is null.
-	 * @return a new List containing only the elements from coinlist that have
+	 * @return a new List containing only the elements from 	list that have
 	 *         the requested currency.
 	 */
 	static List<Valuable> Valuable(List<Valuable> coins,String currency){
