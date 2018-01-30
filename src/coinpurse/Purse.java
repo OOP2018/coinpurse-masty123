@@ -3,6 +3,7 @@ package coinpurse;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 /**
  *  A coin purse contains coins.
  *  You can insert coins, withdraw money, check the balance,
@@ -25,7 +26,7 @@ public class Purse {
      */
     public Purse( int capacity ) {
     	this.capacity = capacity;
-    	money = new ArrayList<Valuable>(this.capacity);
+    	money = new ArrayList<Valuable>();
     }
 
     /**
@@ -77,7 +78,7 @@ public class Purse {
      */
     public boolean insert( Valuable val ) {
         // if the purse is already full then can't insert anything.
-    	if (!isFull() && val.getValue() != 0 && val != null) {
+    	if (!isFull() && val.getValue() > 0 ) {
     		money.add(val);
     		return true;
     	}
@@ -94,29 +95,37 @@ public class Purse {
      */
     public Valuable[] withdraw( double amount ) {
         if (amount < 0) {return null ;}
-	  
-        Collections.sort(money);	
-        ArrayList<Valuable> cash = new ArrayList<Valuable>();
-        if (getBalance() >= amount){
-        	for (int i = money.size()-1 ; i >=0 ; i--){
-        		if (amount - money.get(i).getValue() >= 0){
-        			amount -= money.get(i).getValue();
-        			cash.add(money.get(i));
-        		}
-        	}
+        
+    	Comparator<Valuable> comp = new ValueComparator();
+        if (amount < 0) {
+            return null;
         }
-	
-		if ( amount > 0 ){	
-			// failed. Don't change the contents of the purse.
-			return null;			
-		}	
-		for (int i = 0 ; i < cash.size() ; i++ ){
-			money.remove(cash.get(i));
-		}
-
-		Valuable [] array = new Valuable[ cash.size() ]; // create the array
-		cash.toArray(array);
-		return array;
+        Collections.sort(money,comp);
+        ArrayList<Valuable> cash = new ArrayList<Valuable>();
+        if (getBalance() >= amount) {
+            for (int i = money.size()-1 ; i >=0 ; i--) {
+                if (amount - money.get(i).getValue() >= 0) {
+                    amount -= money.get(i).getValue();
+                    cash.add(money.get(i));
+                }
+            }
+        }
+        if (amount != 0) {
+            return null;
+        }
+        for (int i = 0; i < cash.size(); i++) {
+            money.remove(cash.get(i));
+        }
+        Valuable[] array = new Valuable[cash.size()];// create the array
+        cash.toArray(array);
+        return array;
+	}
+    
+    /**
+	 * returns a string description of the purse contents. 
+	 */
+    public List<Valuable> getMoney() {
+		return money;
 	}
 
     /** 

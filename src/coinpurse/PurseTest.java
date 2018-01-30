@@ -14,8 +14,7 @@ import org.junit.Test;
  * To run these tests, right click on this file (in Project panel)
  * and choose Run As -> JUnit test
  * 
- * @author  Resident Evil
- * @version 2018.01.19
+ * @author  Theeruth Borisuth
  */
 public class PurseTest {
 	/** tolerance for comparing two double values */

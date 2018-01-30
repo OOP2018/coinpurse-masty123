@@ -3,38 +3,53 @@ package coinpurse;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Comparator;
 /**
  * Some Money utility methods filtering the currency of the coin and sorting coins
  * @author Theeruth Borisuth
  */
 public class MoneyUtil  {
 	/**
+	 * Method that examines all the coins in a List and returns only the coins
+	 * that have a currency that matches the parameter value.
 	 * 
-	 * @param coins : is a List of Coin objects. This list is not modified.
-	 * @param currency : is the currency we want. Must not be null.
+	 * @param coinlist
+	 *            is a List of Coin objects. This list is not modified.
+	 * @param currency
+	 *            is the currency we want. Must not be null.
 	 * @throws IllegalArgumentException
 	 *             if currency is null.
-	 * @return a new List containing only the elements from 	list that have
+	 * @return a new List containing only the elements from coinlist that have
 	 *         the requested currency.
 	 */
-	static List<Valuable> Valuable(List<Valuable> coins,String currency){
-		if (currency == null){
+	public static List<Valuable> filterByCurrency(final List<Valuable> coinlist, String currency) {
+		if (currency == null) {
 			throw new IllegalArgumentException("Currency cannot be null");
 		}
-		List<Valuable> coin = new ArrayList<>();
-		for (Valuable cash : coin){
-			if (cash.getCurrency().equalsIgnoreCase(currency)){
-				coin.add(cash);
+		List<Valuable> temp = new ArrayList<Valuable>();
+		for (Valuable c : coinlist) {
+			if (c.getCurrency().equalsIgnoreCase(currency)) {
+				temp.add(c);
 			}
 		}
-		return Collections.unmodifiableList(coins);
+		return temp;
 	}
 	/**
 	 * This method's purpose is only use to sort the coin by using the Collections.sort
 	 * @param coins : An object called coin.
 	 */
 	static void sortCoins(List<Valuable> coins){
-		java.util.Collections.sort( coins );
+		Collections.sort(coins, new Comparator<Valuable>(){
+
+			@Override
+			public int compare(Valuable v1, Valuable v2) {
+				if (v1.getValue() < v2.getValue()) return -1;
+				else if (v1.getValue() > v2.getValue()) return 1;
+				return 0;
+			}
+			
+		}); printCoins(coins);
+
 	}
 	/**
 	 * This method is use for printing coins.
@@ -56,5 +71,12 @@ public class MoneyUtil  {
 		coins.add( new Coin(2.0, "Baht") ); 
 		coins.add( new Coin(1.0, "Baht") );
 		printCoins( coins ); // the coins should be sorted by value now
+		Purse p = new Purse(5);
+		p.insert(new Coin(10,"Baht"));
+		p.insert(new Coin(5, "b"));
+		p.insert(new Coin(1, "a"));
+		p.insert(new Coin(5, "Baht"));
+		filterByCurrency(p.getMoney(), "Baht");
+		sortCoins(filterByCurrency(p.getMoney(), "Baht"));
 	}
 }

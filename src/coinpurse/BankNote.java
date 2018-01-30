@@ -1,5 +1,9 @@
 package coinpurse;
-
+/**
+ * BankNote is a class that use to insert money that more than 20.
+ * @author Theeruth Borisuth
+ *
+ */
 public class BankNote implements Valuable {
 	
 	//variables
@@ -12,19 +16,17 @@ public class BankNote implements Valuable {
 	/**
 	 * A banknote with given value and serialNumber.
 	 * @param value
-	 * @param serialNumber
+	 * @param currency
 	 */
 	public BankNote(double value, String currency){
 		this.value = value;
 		this.currency = currency ;
-		this.serialNumber = nextSerialNumber;
-
-	}
-
-	
+		this.serialNumber = nextSerialNumber++;
+	}	
 	/**
 	 * @return value of the banknote.
 	 */
+
 	public double getValue() {
 		return this.value ;
 
@@ -33,6 +35,7 @@ public class BankNote implements Valuable {
 	/**
 	 * @return currency of the banknote
 	 */
+
 	public String getCurrency() {
 		return this.currency;
 	}

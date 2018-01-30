@@ -1,12 +1,12 @@
 package coinpurse;
  
 import java.util.Scanner;
-
 /** 
  * User Interface for the Coin Purse. 
  * This class provides simple interactive dialog for inserting
  * and removing money to/from the purse, and displaying the
  * balance.
+ * @author Theeruth Borisuth
  */
 public class ConsoleDialog {
 	// default currency for this dialog
@@ -108,13 +108,13 @@ public class ConsoleDialog {
         
         if ( scanline.hasNextDouble() ) {
              double amount = scanline.nextDouble( );
-             Valuable [] coins = purse.withdraw(amount);
-             if ( coins == null ) 
+             Valuable [] money = purse.withdraw(amount);
+             if ( money == null ) 
                 System.out.printf("Sorry, couldn't withdraw %.2g %s\n", amount, CURRENCY);
              else {
                 System.out.print("You withdrew:");
-                for(int k=0; k<coins.length; k++) {
-                	System.out.print((k==0?" ":", ") + coins[k].toString() );
+                for(int k=0; k<money.length; k++) {
+                	System.out.print((k==0?" ":", ") + money[k].toString() );
                 }
                 System.out.println();
             }
@@ -126,6 +126,8 @@ public class ConsoleDialog {
     /** Make a Coin (or BankNote or whatever) using requested value. */
     private Valuable makeMoney(double value) {
     	if (value >= 20) {
+//    		int range = (9999999 - 1000000) + 1 ;
+//    		double tempR =
 			return new BankNote(value, CURRENCY);
 		}
     	return new Coin(value, CURRENCY);

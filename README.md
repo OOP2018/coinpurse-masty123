@@ -2,7 +2,7 @@
 by Theeruth Borisuth
 
 This program can deposite and withdraw your coins from the purse.
-This project contains 6 classes
+This project contains 8 classes
 
 ## Coin
 
@@ -27,3 +27,14 @@ A coin purse contains coins. You can insert coins, withdraw money, check the bal
 ## Pursetest
 
 Test the Purse. This is a JUnit 4 test.
+
+
+## BankNote
+
+BankNote is a class that use to insert money that more than 20.
+
+## ValueComparator
+
+Comparing between 2 object that implement Valuable. First, compare them by currency. If both have the same currency order them by value.
+
+
