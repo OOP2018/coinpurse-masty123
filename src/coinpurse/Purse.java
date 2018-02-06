@@ -14,11 +14,16 @@ import java.util.Comparator;
 public class Purse {
     /** Collection of objects in the purse. */
     private List<Valuable> money ;
+    
+    
     /** Capacity is maximum number of items the purse can hold.
      *  Capacity is set when the purse is created and cannot be changed.
      */
-    
     private final int capacity;
+    
+    /**An Object that come from ValueComparator class. Use to compare money.*/
+	private Comparator<Valuable> comp = new ValueComparator();
+
     
     /** 
      *  Create a purse with a specified capacity.
@@ -96,7 +101,6 @@ public class Purse {
     public Valuable[] withdraw( double amount ) {
         if (amount < 0) {return null ;}
         
-    	Comparator<Valuable> comp = new ValueComparator();
         if (amount < 0) {
             return null;
         }

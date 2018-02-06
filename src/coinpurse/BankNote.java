@@ -63,7 +63,7 @@ public class BankNote implements Valuable {
 	 * @return BankNote as a string.
 	 */
 	public String toString(){
-		return value+"---"+currency+" ["+serialNumber+"]";
+		return value+"-"+currency+" note ["+serialNumber+"]";
 
 	}
 
