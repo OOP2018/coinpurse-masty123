@@ -42,7 +42,7 @@ public class BankNote implements Valuable {
 	/**
 	 * @return serialNumber of the BankNote
 	 */
-	public long getSerialNumber(){
+	public long getSerial(){
 		return this.serialNumber;
 	}
 	/**
