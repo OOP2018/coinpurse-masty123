@@ -100,14 +100,12 @@ public class Purse {
      */
     public Valuable[] withdraw( double amount ) {
         if (amount < 0) {return null ;}
-        
-        if (amount < 0) {
-            return null;
-        }
         Collections.sort(money,comp);
         ArrayList<Valuable> cash = new ArrayList<Valuable>();
         if (getBalance() >= amount) {
+   
             for (int i = money.size()-1 ; i >=0 ; i--) {
+            	
                 if (amount - money.get(i).getValue() >= 0) {
                     amount -= money.get(i).getValue();
                     cash.add(money.get(i));
@@ -137,19 +135,18 @@ public class Purse {
     	 Collections.sort(money, comp);
     	 List<Valuable> m =  MoneyUtil.filterByCurrency(money,amount.getCurrency());
     	 List<Valuable> temp = new ArrayList<Valuable>();
-    	 
+   
     	 if(getBalance() >= amount.getValue()){
-    		 for (int i = m.size()-1 ; i >= 0 ; i--){
-    			 if (cash - m.get(i).getValue() >= 0){
-    				 cash -= m.get(i).getValue();
-    				 temp.add(m.get(i));
-    			 }
+    		 for (Valuable value : m){
+    			 if (cash - value.getValue() >= 0){
+    				 cash -= value.getValue();
+    				 temp.add(value);
+    			 } 
     		 }
     	 }
-    	 
     	 if (cash != 0) return null;
-    	 for (int i = 0 ; i < temp.size(); i++){
-    		 m.remove(temp.get(i));
+    	 for (Valuable value : temp){
+    		 money.remove(value);
     	 }
     	 
     	 Valuable[] array = new Valuable[temp.size()];// create the array
@@ -175,16 +172,6 @@ public class Purse {
     public String toString() {
     	return money.size() + " coins with value " + this.getBalance();
     }
-    //For testing
-    public static void main(String[] args) {
-		Purse p = new Purse(3);
-		p.insert(new Coin(10,"Baht"));
-		p.insert(new BankNote(100,"Dollar"));
-		p.insert(new BankNote(50,"Rupree"));
-
-		Valuable b = new Coin(1,"Baht");
-		p.withdraw(1);
-		MoneyUtil.printCoins(p.money);
-	}
+  
 
 }
