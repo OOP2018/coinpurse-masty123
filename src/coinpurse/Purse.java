@@ -126,6 +126,42 @@ public class Purse {
 	}
     
     /**
+     * Withdraw the amount using only items that have the same currency as the parameter(amount) 
+     * @param amount : amount of the money that we are going to withdraw.
+     * @return remaining money 
+     */
+    public Valuable[] withdraw( Valuable amount ) {
+    	if(amount == null || amount.getValue() <= 0 ) return null;
+    	
+    	 double cash = amount.getValue();
+    	 Collections.sort(money, comp);
+    	 List<Valuable> m =  MoneyUtil.filterByCurrency(money,amount.getCurrency());
+    	 List<Valuable> temp = new ArrayList<Valuable>();
+    	 
+    	 if(getBalance() >= amount.getValue()){
+    		 for (int i = m.size()-1 ; i >= 0 ; i--){
+    			 if (cash - m.get(i).getValue() >= 0){
+    				 cash -= m.get(i).getValue();
+    				 temp.add(m.get(i));
+    			 }
+    		 }
+    	 }
+    	 
+    	 if (cash != 0) return null;
+    	 for (int i = 0 ; i < temp.size(); i++){
+    		 m.remove(temp.get(i));
+    	 }
+    	 
+    	 Valuable[] array = new Valuable[temp.size()];// create the array
+         temp.toArray(array);
+         return array;
+    	 
+        	
+     
+	}
+    
+    
+    /*
 	 * returns a string description of the purse contents. 
 	 */
     public List<Valuable> getMoney() {
@@ -139,7 +175,16 @@ public class Purse {
     public String toString() {
     	return money.size() + " coins with value " + this.getBalance();
     }
-    
-  
+    //For testing
+    public static void main(String[] args) {
+		Purse p = new Purse(3);
+		p.insert(new Coin(10,"Baht"));
+		p.insert(new BankNote(100,"Dollar"));
+		p.insert(new BankNote(50,"Rupree"));
+
+		Valuable b = new Coin(1,"Baht");
+		p.withdraw(1);
+		MoneyUtil.printCoins(p.money);
+	}
 
 }

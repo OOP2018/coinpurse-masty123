@@ -55,7 +55,7 @@ public class MoneyUtil  {
 	 * This method is use for printing coins.
 	 * @param coins
 	 */
-	private static void printCoins(List<Valuable> coins) {
+	static void printCoins(List<Valuable> coins) {
 		for (Valuable c : coins){
 			System.out.println(c.toString());
 		}
