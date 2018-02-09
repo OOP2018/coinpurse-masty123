@@ -6,24 +6,29 @@ package coinpurse;
 * @author Theeruth Borisuth
 */
 public class Coin implements Valuable {
+	//variables.
 	private double value;
-	String currency;
-	
-	Coin(double value, String currency){
+	private String currency;
+	/**
+	 * A banknote with given value and serialNumber.
+	 * @param value
+	 * @param currency
+	 */
+	public Coin(double value, String currency){
 			this.value = value ;
 			this.currency = currency;
 
 	}
 	/**
 	 * Get the value of the coin
-	 * @return value
+	 * @return value of the coin
 	 */
 	public double getValue(){
 		return this.value;
 	}
 	/**
 	 * Get the currency of the coin.
-	 * @return
+	 * @return currency of the coin
 	 */
 	public String getCurrency(){
 		return this.currency;
@@ -42,7 +47,7 @@ public class Coin implements Valuable {
 	}
 	/**
 	 * Compare the value of 2 coins.
-	 * @return int of compareTo method.
+	 * @return Integer of compareTo method.
 	 */
 	public int compareTo(Valuable coin){
 		if(this.value < coin.getValue()){
