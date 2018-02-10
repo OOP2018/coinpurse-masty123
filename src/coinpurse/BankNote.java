@@ -11,7 +11,7 @@ public class BankNote extends Money  {
 	private static long nextSerialNumber = 1000000;
 	
 	/**
-	 * A banknote with given value and serialNumber.
+	 * A BankNote with given value and currency.
 	 * @param value
 	 * @param currency
 	 */
@@ -19,6 +19,27 @@ public class BankNote extends Money  {
 		super(value, currency);
 		this.serialNumber = nextSerialNumber++;
 	}	
+	/**
+	 * 
+	 * A BankNote with given value and serialNumber.
+	 *
+	 * @param value
+	 * @param serialNumber
+	 */
+	public BankNote(double value, long serialNumber) {
+		super(value,"Baht");
+		this.serialNumber = serialNumber;
+	}
+	/**
+	 * A BankNote with given value, currency and serialNumber.
+	 * @param value
+	 * @param currency
+	 * @param serialNumber
+	 */
+	public BankNote(double value, String currency, long serialNumber) {
+		super(value,currency);
+		this.serialNumber = serialNumber;
+	}
 	/**
 	 * @return serialNumber of the BankNote
 	 */

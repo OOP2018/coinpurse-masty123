@@ -65,29 +65,26 @@ public class MoneyUtil  {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-//		List<Valuable> coins = new ArrayList<Valuable>( );
-//		coins.add( new Coin(10.0, "Baht") );
-//		coins.add( new Coin(0.5, "Baht") );
-//		coins.add( new Coin(2.0, "Baht") ); 
-//		coins.add( new Coin(1.0, "Baht") );
-//		printCoins( coins ); // the coins should be sorted by value now
-		Purse p = new Purse(5);
+
+//		Purse p = new Purse(5);
+//		p.insert(new Coin(10,"Baht"));
+//		p.insert(new Coin(5, "b"));
+//		p.insert(new Coin(1, "a"));
+//		p.insert(new Coin(5, "Baht"));
+//		p.withdraw(new Money(1, "a"));
+//		System.out.println(p.toString());
+		Purse p = new Purse(10);
+		p.insert(new Coin(1,"Baht"));
+		p.insert(new BankNote(2,"Dollar"));
+		p.insert(new Coin(4,"Baht"));
+		p.insert(new Coin(5,"Dollar"));
+		p.insert(new Coin(8,"Baht"));
 		p.insert(new Coin(10,"Baht"));
-		p.insert(new Coin(5, "b"));
-		p.insert(new Coin(1, "a"));
-		p.insert(new Coin(5, "Baht"));
-//		filterByCurrency(p.getMoney(), "Baht");
-//		sortCoins(filterByCurrency(p.getMoney(), "Baht"));
-//		Money m1 = new Coin(0.000001,"Baht");
-//		Money m2 = new BankNote(10000,"Rupee");
-//		Money m3 = new BankNote(100,"Baht");
-//		BankNote m4 = new BankNote(100,"Baht");
-//		System.out.println(m1.equals(m2));
-//		System.out.println(m2.equals(m3));
-//		System.out.println(m3.equals(m4));
-//		System.out.println(m2);
-//		System.out.println(m3);
-		p.withdraw(new Money(1, "a"));
+		p.insert(new BankNote(30,"Baht"));
+		p.withdraw(13);
 		System.out.println(p.toString());
+
+		
+		
 	}
 }
