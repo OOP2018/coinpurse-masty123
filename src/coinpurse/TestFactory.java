@@ -1,7 +1,11 @@
 package coinpurse;
 
 import java.util.ResourceBundle;
-
+/**
+ * This class's purpose is only for testing .
+ * @author Theeruth Borisuth
+ *
+ */
 public class TestFactory {
 	public static void main(String[] args) {
 		ResourceBundle bundle = ResourceBundle.getBundle("purse");
@@ -21,10 +25,7 @@ public class TestFactory {
 		else
 			MoneyFactory.setMoney(factory);
 		
-		
-		
-		
-		
+	
 		//FOR TESTING ONLY
 		Purse p = new Purse(100);
 		p.insert(factory.createMoney(10));
