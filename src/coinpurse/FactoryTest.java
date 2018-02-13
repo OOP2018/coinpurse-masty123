@@ -6,20 +6,20 @@ import java.util.ResourceBundle;
  * @author Theeruth Borisuth
  *
  */
-public class TestFactory {
+public class FactoryTest {
 	public static void main(String[] args) {
 		ResourceBundle bundle = ResourceBundle.getBundle("purse");
-		String factoryclass = bundle.getString("moneyfactory");
+		String classFactory = bundle.getString("moneyfactory");
 		MoneyFactory factory = null;
 
-		// get the actual money factory.
 		try {
-			factory = (MoneyFactory) Class.forName(factoryclass).newInstance();
+			factory = (MoneyFactory) Class.forName(classFactory).newInstance();
 		} catch (ClassCastException e) {
-			System.out.println(factoryclass + " is not type MoneyFactory");
+			System.out.println(classFactory + " is not type MoneyFactory");
 		} catch (Exception e) {
 			System.out.println("Error creating MoneyFactory " + e.getMessage());
 		}
+		
 		if (factory == null)
 			System.exit(1);
 		else
@@ -28,15 +28,15 @@ public class TestFactory {
 	
 		//FOR TESTING ONLY
 		Purse p = new Purse(100);
-		p.insert(factory.createMoney(10));
-		p.insert(factory.createMoney(1));
-		p.insert(factory.createMoney(50));
+		p.insert(factory.createMoney(0.5));
 		p.insert(factory.createMoney(5));
+		p.insert(factory.createMoney(10));
 		p.insert(factory.createMoney(20));
+		p.insert(factory.createMoney(50));		
 		p.insert(factory.createMoney(100));
 		p.insert(factory.createMoney("1000"));
-		for(Valuable money : p.getMoney()) {
-			System.out.println(money);
+		for(Valuable value : p.getMoney()) {
+			System.out.println(value);
 		}
 	}
 }

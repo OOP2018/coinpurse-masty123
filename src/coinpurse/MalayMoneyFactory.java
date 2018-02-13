@@ -5,10 +5,6 @@ package coinpurse;
  *
  */
 public class MalayMoneyFactory extends MoneyFactory {
-	/** attribute for assigns BankNote serial number */
-	private static long nextSerialNumber = 1000000 ;
-	/** attribute for Malaysia currency */
-	private final String CURRENCY = "Ringgit";
 	/**
 	 * Create a Malaysia money.
 	 * @param value - value of a Malaysia money
@@ -17,8 +13,9 @@ public class MalayMoneyFactory extends MoneyFactory {
 	@Override
 	public Valuable createMoney(double value) {
 		Valuable malaymoney = null ;
-		if (isCoin(value)) malaymoney = new Coin(value,CURRENCY);
-		else if (isBankNote(value)) malaymoney = new BankNote(value,CURRENCY,nextSerialNumber++);
+		String currency = "Ringgit";
+		if (isCoin(value)) malaymoney = new Coin(value,currency);
+		else if (isBankNote(value)) malaymoney = new BankNote(value,currency,nextSerialNumber++);
 		else throw new IllegalArgumentException();
 		return malaymoney;
 	}
@@ -28,8 +25,7 @@ public class MalayMoneyFactory extends MoneyFactory {
 	 * @return true if it is Malaysia coin, false if it is not
 	 */
 	public boolean isCoin(double value){
-		if(value == 0.05 || value == 0.5 || value == 0.1 || value == 0.2) return true ;
-		return false;
+		return (value == 0.05 || value == 0.5 || value == 0.1 || value == 0.2);	
 	}
 	/**
 	 * Check if value can be consider as Malaysia BankNote.
@@ -37,7 +33,6 @@ public class MalayMoneyFactory extends MoneyFactory {
 	 * @return true if it is Malaysia BankNote, false if it is not
 	 */
 	public boolean isBankNote(double value){
-		if(value == 1 || value == 2 || value == 5  || value == 10 || value == 20 || value == 50 || value == 100) return true ;
-		return false;
+		return (value == 1 || value == 2 || value == 5  || value == 10 || value == 20 || value == 50 || value == 100) ;
 	}
 }

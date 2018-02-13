@@ -7,6 +7,7 @@ package coinpurse;
 public abstract class MoneyFactory {
 	//Attribute for Moneyfactory
 	private static MoneyFactory factory = null ;
+	protected static long nextSerialNumber = 1000000;
 	/**
 	 * Constructor
 	 */
@@ -22,7 +23,10 @@ public abstract class MoneyFactory {
 	 * Create new money object in the local currency if the value is invalid throw illegalArgumentExcepton.
 	 */
 	public abstract Valuable createMoney(double valuable);
-	
+	/**
+	 *  Set type of money.
+	 * @param difference : type of money
+	 */
 	public static  void setMoney(MoneyFactory difference){ factory = difference ; }
 	/**
 	 * Accept money value as String. If value is an invalid number throw  illegalArgumentExcepton. 
