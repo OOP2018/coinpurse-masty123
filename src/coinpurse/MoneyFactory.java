@@ -1,4 +1,6 @@
 package coinpurse;
+import java.util.ResourceBundle;
+
 /**
  * A class that used to create money object. It can choose more than 1 currency.
  * @author Theeruth Borisuth
@@ -17,6 +19,22 @@ public abstract class MoneyFactory {
 	 * @return factory : the factory that was declared.
 	 */
 	static MoneyFactory getInstance(){ 
+			ResourceBundle bundle = ResourceBundle.getBundle("purse");
+			String classFactory = bundle.getString("moneyfactory");
+			
+			try {
+				factory = (MoneyFactory) Class.forName(classFactory).newInstance();
+			} catch (ClassCastException e) {
+				System.out.println(classFactory + " is not type MoneyFactory");
+			} catch (Exception e) {
+				System.out.println("Error creating MoneyFactory " + e.getMessage());
+			}
+			
+			if (factory == null)
+				System.exit(1);
+			else
+				MoneyFactory.setMoney(factory);
+			
 			return factory; 
 	}
 	/*
