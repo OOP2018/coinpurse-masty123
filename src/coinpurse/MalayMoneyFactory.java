@@ -14,7 +14,7 @@ public class MalayMoneyFactory extends MoneyFactory {
 	public Valuable createMoney(double value) {
 		Valuable malaymoney = null ;
 		String currency = "Ringgit";
-		if (isCoin(value)) malaymoney = new Coin(value,currency);
+		if (isCoin(value)) malaymoney = new Coin(value,currency,"Sen",100);
 		else if (isBankNote(value)) malaymoney = new BankNote(value,currency,nextSerialNumber++);
 		else throw new IllegalArgumentException();
 		return malaymoney;
