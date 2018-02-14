@@ -51,7 +51,7 @@ public class BankNote extends Money  {
 	 * @return BankNote as a string.
 	 */
 	public String toString(){
-		return getValue()+"-"+getCurrency()+" note ["+serialNumber+"]";
+		return getValue()+"-"+getCurrency()+" note ["+getSerial()+"]";
 
 	}
 

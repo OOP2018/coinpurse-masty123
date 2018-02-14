@@ -151,7 +151,7 @@ public class Purse {
      * @return It can return whatever is a useful description.
      */
     public String toString() {
-    	return money.size() + " coins with value " + this.getBalance();
+    	return count() + " coins with value " + this.getBalance();
     }
   
 
