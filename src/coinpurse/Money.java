@@ -35,7 +35,7 @@ public class Money implements Valuable {
 		if (obj.getClass() != this.getClass() || obj == null){
 			return false;
 		}
-		Valuable coins = (Valuable) obj;
+		Money coins = (Money) obj;
 		return this.getValue() == coins.getValue() && this.getCurrency().equals(coins.getCurrency());
 	}
 
