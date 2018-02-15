@@ -14,7 +14,9 @@ public class ThaiMoneyFactory extends MoneyFactory {
 	public Valuable createMoney(double value) {
 		Valuable money ;
 		String currency = "Baht";
-		if(isCoin(value)) money = new Coin(value,currency);
+		String subCurrency = "Satang";
+		if(isSatang(value)) money = new Coin(value, currency, subCurrency);
+		else if(isCoin(value)) money = new Coin(value,currency);
 		else if (isBankNote(value)) money = new BankNote(value, currency);
 		else throw new IllegalArgumentException();
 		return money;
@@ -27,6 +29,10 @@ public class ThaiMoneyFactory extends MoneyFactory {
 	public boolean isCoin(double value){
 		return 	(value == 1 | value == 2 | value == 5 || value == 10) ;
 
+	}
+	
+	public boolean isSatang(double value){
+		return (value == 0.5 || value == 0.25);
 	}
 	/**
 	 * Check if value can be consider as Thai BankNote.
