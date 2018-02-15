@@ -19,7 +19,7 @@ public class Money implements Valuable {
 	}
 
 	/**
-	 * Get the currency of the coin.
+	 * Get the currency of the coin.q
 	 * @return currency of the coin
 	 */
 	public String getCurrency() {

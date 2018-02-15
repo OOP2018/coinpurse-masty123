@@ -114,6 +114,7 @@ public class Purse {
     	
     	 double cash = amount.getValue();
     	 Collections.sort(money, comp);
+    	 Collections.reverse(money);
     	 List<Valuable> m =  MoneyUtil.filterByCurrency(money,amount.getCurrency());
     	 List<Valuable> temp = new ArrayList<Valuable>();
    
@@ -132,10 +133,7 @@ public class Purse {
     	 
     	 Valuable[] array = new Valuable[temp.size()];// create the array
          temp.toArray(array);
-         return array;
-    	 
-        	
-     
+         return array;  
 	}
     
     
