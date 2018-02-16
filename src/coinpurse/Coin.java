@@ -42,13 +42,9 @@ public class Coin extends Money  {
     	this.subCurrency = subCurrency;
 
 	}
-	
-	
-	public boolean isSatang(double value){
-		return (value == 0.5 || value == 0.25);
-	}
 	/**a message of coin.
 	 * @return  value and the currency of the coin.
+	 *          Also it will check the Malaysian coin case too.
 	 */
 	public String toString(){
 		if(currency.equalsIgnoreCase("Ringgit")) {
