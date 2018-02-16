@@ -98,7 +98,7 @@ public class Purse {
      *  @return array of Coin objects for money withdrawn, 
 	 *    or null if cannot withdraw requested amount.
      */
-    public Valuable[] withdraw( double amount ) {
+    public Money[] withdraw( double amount ) {
     	Valuable money = new Money(amount,"Baht");
     	return withdraw(money);
     	
@@ -109,7 +109,7 @@ public class Purse {
      * @param amount : amount of the money that we are going to withdraw.
      * @return remaining money 
      */
-    public Valuable[] withdraw( Valuable amount ) {
+    public Money[] withdraw( Valuable amount ) {
     	if(amount == null || amount.getValue() <= 0 ) return null;
     	
     	 double cash = amount.getValue();
@@ -131,7 +131,7 @@ public class Purse {
     		 money.remove(value);
     	 }
     	 
-    	 Valuable[] array = new Valuable[temp.size()];// create the array
+    	 Money[] array = new Money[temp.size()];// create the array
          temp.toArray(array);
          return array;  
 	}

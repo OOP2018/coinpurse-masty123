@@ -30,7 +30,11 @@ public class ThaiMoneyFactory extends MoneyFactory {
 		return 	(value == 1 | value == 2 | value == 5 || value == 10) ;
 
 	}
-	
+	/**
+	 * Check if value can be consider as Thai coin that is a subCurrency called "Satang".
+	 * @param value - value that you want to check
+	 * @return trUe if it is  0.5,0.25 Satang.
+	 */
 	public boolean isSatang(double value){
 		return (value == 0.5 || value == 0.25);
 	}
