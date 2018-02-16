@@ -1,9 +1,6 @@
 
 package coinpurse;
 import static org.junit.Assert.*;
-
-import java.util.Arrays;
-import java.util.List;
 import org.junit.Test;
 
 /**
@@ -18,7 +15,39 @@ import org.junit.Test;
  * @author  Theeruth Borisuth
  */
 public class MoneyFactoryTest {
-	//What to do... What to do...
+	/** tolerance for comparing two double values */
+
+	private static final double TOL = 1.0E-6;
+	private static final String CURRENCY = "Baht";
+	
+    /**
+     * Sets up the test fixture.
+     * Called before every test method.
+     */
+    
+    public void setUp() {
+    	// nothing to initialize
+    }
+    
+    
+    @Test
+    public void testSetAndgetInstance(){
+    	MoneyFactory.setMoney(new ThaiMoneyFactory());
+    	assertEquals(MoneyFactory.getInstance().getClass().getSimpleName(),"ThaiMoneyFactory");
+   
+    }
+    
+    @Test
+    public void testCreateMoney(){
+    	MoneyFactory.setMoney(new ThaiMoneyFactory());
+    	MoneyFactory mf = MoneyFactory.getInstance();
+    	Valuable bk1 = mf.createMoney(100);
+    	Valuable bk2 = mf.createMoney("500");
+    	assertEquals(((BankNote)bk1).getSerial(), 1000000);
+    	assertEquals(((BankNote)bk2).getSerial(), 1000001);
+    }
+    
+    
 }
 
 
