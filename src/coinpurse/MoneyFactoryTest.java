@@ -38,13 +38,23 @@ public class MoneyFactoryTest {
     }
     
     @Test
-    public void testCreateMoney(){
+    public void testCreateMoneySerial(){
     	MoneyFactory.setMoney(new ThaiMoneyFactory());
     	MoneyFactory mf = MoneyFactory.getInstance();
     	Valuable bk1 = mf.createMoney(100);
     	Valuable bk2 = mf.createMoney("500");
     	assertEquals(((BankNote)bk1).getSerial(), 1000000);
     	assertEquals(((BankNote)bk2).getSerial(), 1000001);
+    }
+    
+    
+    @Test(expected = IllegalArgumentException.class)
+    public void testExceptionCreateMoney(){
+    	MoneyFactory.setMoney(new ThaiMoneyFactory());
+    	MoneyFactory mf = MoneyFactory.getInstance();
+    	Valuable bk3 = mf.createMoney("hello");
+    	assertEquals(((BankNote)bk3).getSerial(), 1000000);
+
     }
     
     

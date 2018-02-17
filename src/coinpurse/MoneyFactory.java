@@ -57,7 +57,7 @@ public abstract class MoneyFactory {
 		try {
 		    valuable = Double.parseDouble( value );
 		} catch (IllegalArgumentException E) {
-		    throw new IllegalArgumentException("Sorry, it's is not a valid amount.");
+		    throw new IllegalArgumentException(	);
 		}
 		return this.createMoney(valuable) ;
 	}	
