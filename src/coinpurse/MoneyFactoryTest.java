@@ -209,6 +209,11 @@ public class MoneyFactoryTest {
 		
 		assertNotEquals(money1.toString(), money2.toString());
 	}
+	@Test(expected=NumberFormatException.class)
+	public void testInvalidInput(){
+		Valuable money = mf.createMoney("sss");
+		assertEquals("Invalid input.. Please Try Again",money.toString());
+	}
 	
 	
 	

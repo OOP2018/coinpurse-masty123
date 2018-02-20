@@ -5,6 +5,7 @@ import java.util.ResourceBundle;
 public class MoneyFactoryDemo {
 	
 	public static void main(String[] args) {
+		
 		MoneyFactory mf = MoneyFactory.getInstance();
 		ResourceBundle bundle = ResourceBundle.getBundle("purse");
 		String classFactory = bundle.getString("moneyfactory");
@@ -21,12 +22,15 @@ public class MoneyFactoryDemo {
 			System.exit(1);
 		else
 			MoneyFactory.setMoneyFactory(mf);
+		
+		
 		Purse p = new Purse(5);
 		p.insert(mf.createMoney(0.25));
 		p.insert(mf.createMoney(1));
 		p.insert(mf.createMoney(50));
 		p.insert(mf.createMoney(0.5));
 		p.insert(mf.createMoney("20"));
+		//p.insert(mf.createMoney("sss")); make it error so we can check it.
 		for (Valuable money : p.getMoney()) {
 				System.out.println(money);
 		}
