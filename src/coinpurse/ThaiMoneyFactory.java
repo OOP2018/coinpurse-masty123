@@ -5,6 +5,9 @@ package coinpurse;
  *
  */
 public class ThaiMoneyFactory extends MoneyFactory {
+	
+	private String currency = "Baht";
+	private String subCurrency = "Satang";
 	/**
 	 * Create a Thai money.
 	 * @param value - value of a Thai money
@@ -13,8 +16,7 @@ public class ThaiMoneyFactory extends MoneyFactory {
 	@Override
 	public Valuable createMoney(double value) {
 		Valuable money ;
-		String currency = "Baht";
-		String subCurrency = "Satang";
+
 		if(isSatang(value)) money = new Coin(value, currency, subCurrency);
 		else if(isCoin(value)) money = new Coin(value,currency);
 		else if (isBankNote(value)) money = new BankNote(value, currency);
@@ -30,6 +32,7 @@ public class ThaiMoneyFactory extends MoneyFactory {
 		return 	(value == 1 | value == 2 | value == 5 || value == 10) ;
 
 	}
+	
 	/**
 	 * Check if value can be consider as Thai coin that is a subCurrency called "Satang".
 	 * @param value - value that you want to check
@@ -45,6 +48,20 @@ public class ThaiMoneyFactory extends MoneyFactory {
 	 */
 	public boolean isBankNote(double value){
 		return (value == 20 | value == 50 | value == 100 | value == 500 | value == 1000);
+	}
+	/**
+	 * @return currency of ThaiMoneyFactory.
+	 */
+	@Override
+	public String getCurrency() {
+		return currency;
+	}
+	/**
+	 * @return subCurrency of ThaiMoneyFactory.
+	 */
+	@Override
+	public String getSubCurrecy() {
+		return subCurrency;
 	}
 
 }

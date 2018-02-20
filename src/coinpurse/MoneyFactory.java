@@ -8,12 +8,15 @@ import java.util.ResourceBundle;
  */
 public abstract class MoneyFactory {
 	//Attribute for Moneyfactory
-	private static MoneyFactory factory 	 ;
+	private static MoneyFactory factory ;
 	protected static long nextSerialNumber = 1000000;
 	/**
 	 * Constructor
 	 */
 	public MoneyFactory(){}
+	
+	public abstract String getCurrency();
+	public abstract String getSubCurrecy();
 	/**
 	 * Get an instance of MoneyFactory, return object of a subclass likes ThaiMoneyFactory, MalaysiaFactory etc.
 	 * @return factory : the factory that was declared.

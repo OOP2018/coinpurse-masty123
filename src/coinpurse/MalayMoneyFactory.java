@@ -5,6 +5,8 @@ package coinpurse;
  *
  */
 public class MalayMoneyFactory extends MoneyFactory {
+	private String currency = "Ringgit";
+	private String subCurrency = "Sen";
 	/**
 	 * Create a Malaysia money.
 	 * @param value - value of a Malaysia money
@@ -13,8 +15,6 @@ public class MalayMoneyFactory extends MoneyFactory {
 	@Override
 	public Valuable createMoney(double value) {
 		Valuable malaymoney = null ;
-		String currency = "Ringgit";
-		String subCurrency = "Sen";
 		if (isCoin(value)) malaymoney = new Coin(value,currency,subCurrency);
 		else if (isBankNote(value)) malaymoney = new BankNote(value,currency,nextSerialNumber++);
 		else throw new NumberFormatException("Invalid input Please try again...");
@@ -35,5 +35,20 @@ public class MalayMoneyFactory extends MoneyFactory {
 	 */
 	public boolean isBankNote(double value){
 		return (value == 1 || value == 2 || value == 5  || value == 10 || value == 20 || value == 50 || value == 100) ;
+	}
+	
+	/**
+	 * @return currency of MalayMoneyFactory.
+	 */
+	@Override
+	public String getCurrency() {
+		return currency;
+	}
+	/**
+	 * @return subCurrency of MalayMoneyFactory.
+	 */
+	@Override
+	public String getSubCurrecy() {
+		return subCurrency;
 	}
 }
