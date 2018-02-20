@@ -18,7 +18,7 @@ public class ThaiMoneyFactory extends MoneyFactory {
 		if(isSatang(value)) money = new Coin(value, currency, subCurrency);
 		else if(isCoin(value)) money = new Coin(value,currency);
 		else if (isBankNote(value)) money = new BankNote(value, currency);
-		else throw new IllegalArgumentException();
+		else throw new IllegalArgumentException("Invalid input Please try again...");
 		return money;
 	}
 	/**
