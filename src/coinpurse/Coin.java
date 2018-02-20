@@ -52,6 +52,11 @@ public class Coin extends Money  {
 				return String.format("%.2f - %s coin", getValue()*100, "Sen");				
 			}
 		}
+		if(currency.equalsIgnoreCase("Baht")) {
+			if(value == 0.5 || value == 0.25){
+				return String.format("%.2f - %s coin", getValue(), "Satang");				
+			}
+		}
 		return String.format("%.2f - %s coin", getValue(), getCurrency());
 	}
 

@@ -4,6 +4,9 @@ import static org.junit.Assert.*;
 import java.util.Arrays;
 import java.util.List;
 import org.junit.Test;
+import org.junit.Before;
+
+
 
 /**
  * Test the Purse using JUnit.
@@ -19,14 +22,20 @@ import org.junit.Test;
 public class MoneyFactoryTest {
 	/** tolerance for comparing two double values */
 	private static final double TOL = 1.0E-6;
-	private MoneyFactory mf;
+	private MoneyFactory mf ;
+	
+	@Before
+	public void setUp(){
+		MoneyFactory.setMoneyFactory(new ThaiMoneyFactory());
+		mf = MoneyFactory.getInstance();
+	}
 	
     /**
      * Sets up the test fixture.
      * Called before every test method.
      */
     public void testSetandgetInstance() {
-    	MoneyFactory.setMoney(new ThaiMoneyFactory());
+    	MoneyFactory.setMoneyFactory(new ThaiMoneyFactory());
     	mf = MoneyFactory.getInstance();
     }
     
@@ -61,7 +70,7 @@ public class MoneyFactoryTest {
         purse = new Purse(capacity);
         for(int k=1; k<=capacity; k++) {
             assertFalse(purse.isFull());
-            purse.insert( mf.createMoney(k) );
+            purse.insert( mf.createMoney(5) );
         }
         // should be full now
         assertTrue( purse.isFull() );
@@ -157,12 +166,30 @@ public class MoneyFactoryTest {
 			assertEquals( 0.0, purse.getBalance(), TOL);
 		}
 	}
-	
 	@Test(timeout=1000)
 	public void testSatang(){
 		Purse p = new Purse(3);
 		p.insert(mf.createMoney(0.25));
 		p.insert(mf.createMoney("0.5"));
+		for (Valuable money : p.getMoney()){
+			assertEquals("Baht", money.getCurrency());
+		}
+	}
+	
+	@Test(timeout = 1000)
+	public void toStringCoin(){
+		Valuable money = mf.createMoney(10);
+		assertEquals("10.00 - Baht coin",money.toString());
+		Valuable money2 = mf.createMoney(0.5);
+		assertEquals("0.50 - Satang coin",money2.toString());
+
+	}
+	
+	@Test(timeout=1000)
+	public void  testCurrency(){
+		Purse p = new Purse(2);
+		p.insert(mf.createMoney(0.25));
+		p.insert(mf.createMoney(0.5));
 		for (Valuable money : p.getMoney()){
 			assertEquals("Baht", money.getCurrency());
 		}
@@ -182,6 +209,8 @@ public class MoneyFactoryTest {
 		
 		assertNotEquals(money1.toString(), money2.toString());
 	}
+	
+	
 	
 	@Test(timeout=1000)
 	public void testImpossibleWithdraw() {
