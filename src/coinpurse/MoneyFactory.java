@@ -40,7 +40,7 @@ public abstract class MoneyFactory {
 		double valuable = 0 ;
 		try {
 		    valuable = Double.parseDouble( value );
-		} catch (NumberFormatException e) {
+		} catch (IllegalArgumentException e) {
 		    System.out.println(e.getMessage());
 		}
 		return this.createMoney(valuable) ;
