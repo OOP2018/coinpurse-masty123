@@ -17,7 +17,7 @@ public class MalayMoneyFactory extends MoneyFactory {
 		String subCurrency = "Sen";
 		if (isCoin(value)) malaymoney = new Coin(value,currency,subCurrency);
 		else if (isBankNote(value)) malaymoney = new BankNote(value,currency,nextSerialNumber++);
-		else throw new IllegalArgumentException("Invalid input Please try again...");
+		else throw new NumberFormatException("Invalid input Please try again...");
 		return malaymoney;
 	}
 	/**

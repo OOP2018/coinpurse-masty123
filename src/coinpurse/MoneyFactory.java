@@ -37,11 +37,11 @@ public abstract class MoneyFactory {
 	 */
 	public Valuable createMoney(String value)
 	{
-		double valuable ;
+		double valuable = 0 ;
 		try {
 		    valuable = Double.parseDouble( value );
-		} catch (IllegalArgumentException E) {
-		    throw new IllegalArgumentException(	);
+		} catch (NumberFormatException e) {
+		    System.out.println(e.getMessage());
 		}
 		return this.createMoney(valuable) ;
 	}	
