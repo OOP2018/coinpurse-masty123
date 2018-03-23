@@ -112,7 +112,7 @@ public class Purse {
      *  @return array of Coin objects for money withdrawn, 
 	 *    or null if cannot withdraw requested amount.
      */
-    public Money[] withdraw( double amount ) {
+    public Valuable[] withdraw( double amount ) {
     	Valuable money = new Money(amount,"Baht");
     	return withdraw(money);
     	
@@ -123,30 +123,31 @@ public class Purse {
      * @param amount : amount of the money that we are going to withdraw.
      * @return remaining money 
      */
-    public Money[] withdraw( Valuable amount ) {
-//    	if(amount == null || amount.getValue() <= 0 ) return null;	
+    public Valuable[] withdraw( Valuable amount ) {
+   	if(amount == null || amount.getValue() <= 0 ) return null;	
 //    	 double cash = amount.getValue();
-//    	 Collections.sort(money, comp);
-//    	 Collections.reverse(money);
-//    	 List<Valuable> m =  MoneyUtil.filterByCurrency(money,amount.getCurrency());
-//    	 List<Valuable> temp = new ArrayList<Valuable>();
-    	 List<Valuable> temp = strategy.withdraw(amount, money);
+    	 Collections.sort(money, comp);
+    	 Collections.reverse(money);
+    	 List<Valuable> m =  MoneyUtil.filterByCurrency(money,amount.getCurrency());
+    	 List<Valuable> temp = new ArrayList<Valuable>();
+    	
 //   
-//    	 if(getBalance() >= amount.getValue()){
-////    		 for (Valuable value : m){
-////    			 if (cash - value.getValue() >= 0){
-////    				 cash -= value.getValue();
-////    				 temp.add(value);
-////    			 } 
-////    		 }
+    	 if(getBalance() >= amount.getValue()){
+//    		 for (Valuable value : m){
+//    			 if (cash - value.getValue() >= 0){
+//    				 cash -= value.getValue();
+//    				 temp.add(value);
+//    			 } 
+    		 temp = strategy.withdraw(amount, m);
+   		 }
      		
 //    	 }
-    	 if (amount.getValue() != 0) return null;
+    	 if (temp == null ) return null;
     	 for (Valuable value : temp){
     		 money.remove(value);
     	 }
    	 
-    	 Money[] array = new Money[temp.size()];// create the array
+    	 Valuable[] array = new Valuable[temp.size()];// create the array
          temp.toArray(array);
          return array;  
 	}
