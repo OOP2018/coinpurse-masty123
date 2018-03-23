@@ -25,8 +25,7 @@ public class RecursiveWithdraw implements WithdrawStrategy {
 	public List<Valuable> withdraw(Valuable amount, List<Valuable> money) {
 		if (amount.getValue() == 0) return new ArrayList<Valuable>();
 		if (money.isEmpty() || amount.getValue() < 0) return null;
-		
-		
+	
 			// First Case
 			Valuable remaining = new Money(amount.getValue() - money.get(0).getValue(), amount.getCurrency());
 			List<Valuable> wd1 = withdraw(remaining, money.subList(1, money.size()));

@@ -44,7 +44,7 @@ public class Main {
         // 1. create a Purse
     	Purse purse = new Purse(10);
     	// 2. declare withdraw strategy
-    	purse.setWithdrawStrategy(new GreedyWithdraw());
+    	purse.setWithdrawStrategy(new RecursiveWithdraw());
         // 2. create a ConsoleDialog with a reference to the Purse object
     	ConsoleDialog ui = new ConsoleDialog(purse, currency);
         // 3. run the ConsoleDialog

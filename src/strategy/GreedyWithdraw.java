@@ -15,7 +15,6 @@ public class GreedyWithdraw implements WithdrawStrategy {
    /**An Object that come from ValueComparator class. Use to compare money.*/
 	private Comparator<Valuable> comp = new ValueComparator();
 	
-	
 	/**
 	 * Find and return items from a collection whose total value equals the requested amount.
 	 * @param amount : is the amount of money to withdraw, with currency
