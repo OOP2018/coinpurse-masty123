@@ -143,6 +143,7 @@ public class Purse {
      		
 //    	 }
     	 if (temp == null ) return null;
+    	 
     	 for (Valuable value : temp){
     		 money.remove(value);
     	 }
