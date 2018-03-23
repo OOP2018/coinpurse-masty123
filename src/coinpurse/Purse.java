@@ -41,7 +41,7 @@ public class Purse {
     }
     
     /**
-     * Setting up the strategy.
+     * 
      * @param strategy
      */
     public void setWithdrawStrategy(WithdrawStrategy strategy){
@@ -124,28 +124,28 @@ public class Purse {
      * @return remaining money 
      */
     public Money[] withdraw( Valuable amount ) {
-    	if(amount == null || amount.getValue() <= 0 ) return null;
-    		
-    	 double cash = amount.getValue();
-    	 Collections.sort(money, comp);
-    	 Collections.reverse(money);
-    	 List<Valuable> m =  MoneyUtil.filterByCurrency(money,amount.getCurrency());
-    	 List<Valuable> temp = new ArrayList<Valuable>();
-   
-    	 if(getBalance() >= amount.getValue()){
-//    		 for (Valuable value : m){
-//    			 if (cash - value.getValue() >= 0){
-//    				 cash -= value.getValue();
-//    				 temp.add(value);
-//    			 } 
-//    		 }
-    		temp = strategy.withdraw(amount, m);
-    	 }
-    	 if (cash != 0) return null;
+//    	if(amount == null || amount.getValue() <= 0 ) return null;	
+//    	 double cash = amount.getValue();
+//    	 Collections.sort(money, comp);
+//    	 Collections.reverse(money);
+//    	 List<Valuable> m =  MoneyUtil.filterByCurrency(money,amount.getCurrency());
+//    	 List<Valuable> temp = new ArrayList<Valuable>();
+    	 List<Valuable> temp = strategy.withdraw(amount, money);
+//   
+//    	 if(getBalance() >= amount.getValue()){
+////    		 for (Valuable value : m){
+////    			 if (cash - value.getValue() >= 0){
+////    				 cash -= value.getValue();
+////    				 temp.add(value);
+////    			 } 
+////    		 }
+     		
+//    	 }
+    	 if (amount.getValue() != 0) return null;
     	 for (Valuable value : temp){
     		 money.remove(value);
     	 }
-    	 
+   	 
     	 Money[] array = new Money[temp.size()];// create the array
          temp.toArray(array);
          return array;  

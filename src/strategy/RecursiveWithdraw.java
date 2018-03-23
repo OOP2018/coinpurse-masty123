@@ -28,7 +28,7 @@ public class RecursiveWithdraw implements WithdrawStrategy{
 		}
 		
 		//Second Case
-			List<Valuable> wd2 = withdraw(amount , money.subList(1, money.size()));
+		List<Valuable> wd2 = withdraw(amount , money.subList(1, money.size()));
 			if(wd2 != null){
 			List<Valuable> temp = new ArrayList<Valuable>();
 			temp.add(money.get(0));
