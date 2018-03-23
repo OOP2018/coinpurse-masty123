@@ -1,6 +1,11 @@
 package coinpurse;
 
 import java.util.List;
+
+import strategy.GreedyWithdraw;
+import strategy.RecursiveWithdraw;
+import strategy.WithdrawStrategy;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -23,7 +28,8 @@ public class Purse {
     
     /**An Object that come from ValueComparator class. Use to compare money.*/
 	private Comparator<Valuable> comp = new ValueComparator();
-
+	
+	WithdrawStrategy strategy = new RecursiveWithdraw();
     
     /** 
      *  Create a purse with a specified capacity.
@@ -32,6 +38,14 @@ public class Purse {
     public Purse( int capacity ) {
     	this.capacity = capacity;
     	money = new ArrayList<Valuable>();
+    }
+    
+    /**
+     * Setting up the strategy.
+     * @param strategy
+     */
+    public void setWithdrawStrategy(WithdrawStrategy strategy){
+    	this.strategy = strategy;
     }
 
     /**
@@ -111,7 +125,7 @@ public class Purse {
      */
     public Money[] withdraw( Valuable amount ) {
     	if(amount == null || amount.getValue() <= 0 ) return null;
-    	
+    		
     	 double cash = amount.getValue();
     	 Collections.sort(money, comp);
     	 Collections.reverse(money);
@@ -119,12 +133,13 @@ public class Purse {
     	 List<Valuable> temp = new ArrayList<Valuable>();
    
     	 if(getBalance() >= amount.getValue()){
-    		 for (Valuable value : m){
-    			 if (cash - value.getValue() >= 0){
-    				 cash -= value.getValue();
-    				 temp.add(value);
-    			 } 
-    		 }
+//    		 for (Valuable value : m){
+//    			 if (cash - value.getValue() >= 0){
+//    				 cash -= value.getValue();
+//    				 temp.add(value);
+//    			 } 
+//    		 }
+    		temp = strategy.withdraw(amount, m);
     	 }
     	 if (cash != 0) return null;
     	 for (Valuable value : temp){

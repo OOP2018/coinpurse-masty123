@@ -98,7 +98,7 @@ public class ConsoleDialog {
         
         while( scanline.hasNextDouble() ) {
         	String value = scanline.next();
-//        	MoneyFactory factory = MoneyFactory.getInstance();
+        	MoneyFactory factory = MoneyFactory.getInstance();
         	Valuable money;
         	try{
         		money = factory.createMoney(value);
