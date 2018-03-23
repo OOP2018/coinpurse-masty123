@@ -26,10 +26,8 @@ public class Purse {
      */
     private final int capacity;
     
-    /**An Object that come from ValueComparator class. Use to compare money.*/
-	private Comparator<Valuable> comp = new ValueComparator();
 	
-	WithdrawStrategy strategy = new RecursiveWithdraw();
+	WithdrawStrategy strategy ;
     
     /** 
      *  Create a purse with a specified capacity.
@@ -126,8 +124,6 @@ public class Purse {
     public Valuable[] withdraw( Valuable amount ) {
    	if(amount == null || amount.getValue() <= 0 ) return null;	
 //    	 double cash = amount.getValue();
-    	 Collections.sort(money, comp);
-    	 Collections.reverse(money);
     	 List<Valuable> m =  MoneyUtil.filterByCurrency(money,amount.getCurrency());
     	 List<Valuable> temp = new ArrayList<Valuable>();
     	
@@ -141,7 +137,6 @@ public class Purse {
     		 temp = strategy.withdraw(amount, m);
    		 }
      		
-//    	 }
     	 if (temp == null ) return null;
     	 
     	 for (Valuable value : temp){
